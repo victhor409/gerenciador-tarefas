@@ -6,6 +6,8 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UsuarioService {
 
@@ -15,5 +17,17 @@ public class UsuarioService {
     @Transactional
     public Usuario salvarUsuario(Usuario usuario){
         return this.repository.save(usuario);
+    }
+
+    public Usuario atualizaUsuario(Usuario usuario){
+        return this.repository.save(usuario);
+    }
+
+    public void excluirUsuario(Usuario usuario){
+        this.repository.deleteById(usuario.getId());
+    }
+
+    public List<Usuario> obtemUsuarios(){
+        return this.repository.findAll();
     }
 }
